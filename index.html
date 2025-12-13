@@ -3,79 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【數據動態競賽】各國旅客訪台人數變化 (2015-2024)</title>
+    <title>【趨勢分析】國際旅客訪台人數變化圖 (2015-2024)</title>
 
     <style>
+        /* 基礎樣式 - 溫暖復古主題 */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212; /* 深色背景 */
-            color: #E0E0E0; /* 淺色文字 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, "Microsoft JhengHei", sans-serif;
+            background-color: #D9C6B8; /* 淺棕/米灰背景 */
+            color: #A69E97; /* 基礎文字色 (不變) */
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            line-height: 1.6;
+            line-height: 1.8;
         }
         .container {
             max-width: 1200px;
             width: 100%;
         }
+
+        /* 標題區樣式 */
         header {
             text-align: center;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
         }
         h1 {
-            color: #FFC107; /* 亮黃色作為主標題強調色 */
-            font-size: 2.5em;
-            margin-bottom: 5px;
+            color: #6B6762; /* 標題顏色改為 #6B6762 */
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
         h2 {
-            color: #B0BEC5; /* 灰色副標題 */
-            font-size: 1.2em;
+            color: #6B6762; /* 副標題顏色改為 #6B6762 */
+            font-size: 1.3em;
             font-weight: 300;
             margin-top: 0;
+            opacity: 0.9;
         }
+        
+        /* 裝飾性分隔線 */
+        .divider {
+            width: 100px;
+            height: 3px;
+            margin: 20px auto 40px auto;
+            background: #C67B7B; /* 柔和粉棕分隔線 (不變) */
+            border-radius: 2px;
+        }
+
+        /* 內容與卡片容器 */
+        .content-card {
+            background-color: #F7F3EE; /* 奶油白色卡片背景 (不變) */
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #D9C6B8;
+        }
+        
         p {
-            margin-bottom: 15px;
-            font-size: 1em;
-            color: #B0BEC5;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+            color: #6B6762; /* 段落文字顏色改為 #6B6762 */
             text-align: left;
         }
+        
+        /* 圖表區塊 */
         #chartdiv {
             width: 100%;
-            height: 600px; /* 增加高度，讓圖表更清晰 */
-            background-color: #1E1E1E; /* 圖表容器的深灰色背景 */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            height: 600px;
+            background-color: #F7F3EE; /* 圖表容器背景 (不變) */
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
             margin-top: 20px;
         }
+        
+        /* 備註區 */
         .note {
-            font-size: 0.8em;
-            color: #616161;
+            font-size: 0.9em;
+            color: #6B6762; /* 備註文字顏色改為 #6B6762 */
+            opacity: 0.7;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* 【重點樣式】: 改變文字顏色並加粗 */
+        .highlight {
+            color: #C67B7B; /* 柔和粉棕 (強調色，不變) */
+            font-weight: 700;
         }
     </style>
 
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Dark.js"></script> </head>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Dark.js"></script>
+</head>
 <body>
 
     <div class="container">
         <header>
-            <h1>🌏 國際旅客訪台人數動態競賽 📊</h1>
+            <h1>🌏 國際旅客訪台人數變化圖 📊</h1>
             <h2>數據涵蓋 2015 年 (民國 104 年) 至 2024 年 (民國 113 年)</h2>
         </header>
 
-        <p>
-            這張動態條形圖展示了來自主要國家/地區的旅客在 **2015 年至 2024 年**間，每年訪問台灣的人數變化。數據以**年份**為軸線滾動，直觀地呈現了各個國家客源市場份額的消長與排名變化。
-        </p>
-        <p>
-            您可以觀察到在 **2020 年至 2022 年**期間，國際旅遊市場受到全球事件的顯著衝擊，數據出現大幅下降。而隨著國境開放，從 **2023 年**起，各國旅客數字正逐步回升，並預計在 **2024 年**繼續增長。
-        </p>
+        <div class="divider"></div> 
+        
+        <div class="content-card">
+            <p>
+                這張動態條形圖展示了來自主要國家/地區的旅客在 <span class="highlight">2015 年至 2024 年</span>間，每年訪問台灣的人數變化。數據以<span class="highlight">年份</span>為軸線滾動，直觀地呈現了各個國家客源市場份額的消長與排名變化。
+            </p>
+            <p>
+                您可以觀察到在 <span class="highlight">2020 年至 2022 年</span>期間，國際旅遊市場受到全球事件的顯著衝擊，數據出現大幅下降。而隨著國境開放，從 <span class="highlight">2023 年</span>起，各國旅客數字正逐步回升，並預計在 <span class="highlight">2024 年</span>繼續增長。
+            </p>
+        </div>
 
         <div id="chartdiv"></div>
 
@@ -86,179 +128,58 @@
     <script>
     am5.ready(function() {
 
-    // Data (使用您提供的資料)
     var allData = {
-        // 民國 104 年 (ROC Year 104) = 2015 年 (AD Year 2015)
         "2015": {
-            "日本": 1629193,
-            "韓國": 662670,
-            "越南": 143930,
-            "泰國": 121337,
-            "馬來西亞": 458401,
-            "新加坡": 354767,
-            "菲律賓": 139758,
-            "印尼": 181734,
-            "印度": 36833,
-            "美國": 497410,
-            "加拿大": 126003
+            "日本": 1629193, "韓國": 662670, "越南": 143930, "泰國": 121337, "馬來西亞": 458401, "新加坡": 354767, "菲律賓": 139758, "印尼": 181734, "印度": 36833, "美國": 497410, "加拿大": 126003
         },
-        // 民國 105 年 (ROC Year 105) = 2016 年 (AD Year 2016)
         "2016": {
-            "日本": 1896456,
-            "韓國": 887412,
-            "越南": 194323,
-            "泰國": 193200,
-            "馬來西亞": 500496,
-            "新加坡": 371663,
-            "菲律賓": 171816,
-            "印尼": 192053,
-            "印度": 38331,
-            "美國": 542261,
-            "加拿大": 143691
+            "日本": 1896456, "韓國": 887412, "越南": 194323, "泰國": 193200, "馬來西亞": 500496, "新加坡": 371663, "菲律賓": 171816, "印尼": 192053, "印度": 38331, "美國": 542261, "加拿大": 143691
         },
-        // 民國 106 年 (ROC Year 106) = 2017 年 (AD Year 2017)
         "2017": {
-            "日本": 1895546,
-            "韓國": 1055207,
-            "越南": 380833,
-            "泰國": 289801,
-            "馬來西亞": 552620,
-            "新加坡": 386843,
-            "菲律賓": 290303,
-            "印尼": 193813,
-            "印度": 40846,
-            "美國": 577628,
-            "加拿大": 155661
+            "日本": 1895546, "韓國": 1055207, "越南": 380833, "泰國": 289801, "馬來西亞": 552620, "新加坡": 386843, "菲律賓": 290303, "印尼": 193813, "印度": 40846, "美國": 577628, "加拿大": 155661
         },
-        // 民國 107 年 (ROC Year 107) = 2018 年 (AD Year 2018)
         "2018": {
-            "日本": 1966303,
-            "韓國": 1021530,
-            "越南": 490699,
-            "泰國": 317086,
-            "馬來西亞": 548947,
-            "新加坡": 389689,
-            "菲律賓": 420302,
-            "印尼": 215891,
-            "印度": 45243,
-            "美國": 594946,
-            "加拿大": 164079
+            "日本": 1966303, "韓國": 1021530, "越南": 490699, "泰國": 317086, "馬來西亞": 548947, "新加坡": 389689, "菲律賓": 420302, "印尼": 215891, "印度": 45243, "美國": 594946, "加拿大": 164079
         },
-        // 民國 108 年 (ROC Year 108) = 2019 年 (AD Year 2019)
         "2019": {
-            "日本": 2162426,
-            "韓國": 1245144,
-            "越南": 404570,
-            "泰國": 410385,
-            "馬來西亞": 560099,
-            "新加坡": 421121,
-            "菲律賓": 510966,
-            "印尼": 234968,
-            "印度": 48575,
-            "美國": 620077,
-            "加拿大": 173491
+            "日本": 2162426, "韓國": 1245144, "越南": 404570, "泰國": 410385, "馬來西亞": 560099, "新加坡": 421121, "菲律賓": 510966, "印尼": 234968, "印度": 48575, "美國": 620077, "加拿大": 173491
         },
-        // 民國 109 年 (ROC Year 109) = 2020 年 (AD Year 2020)
         "2020": {
-            "日本": 268798,
-            "韓國": 179190,
-            "越南": 110053,
-            "泰國": 63303,
-            "馬來西亞": 74788,
-            "新加坡": 46225,
-            "菲律賓": 77914,
-            "印尼": 56725,
-            "印度": 6865,
-            "美國": 82989,
-            "加拿大": 22078
+            "日本": 268798, "韓國": 179190, "越南": 110053, "泰國": 63303, "馬來西亞": 74788, "新加坡": 46225, "菲律賓": 77914, "印尼": 56725, "印度": 6865, "美國": 82989, "加拿大": 22078
         },
-        // 民國 110 年 (ROC Year 110) = 2021 年 (AD Year 2021)
         "2021": {
-            "日本": 9910,
-            "韓國": 3165,
-            "越南": 24872,
-            "泰國": 7534,
-            "馬來西亞": 6188,
-            "新加坡": 2309,
-            "菲律賓": 9350,
-            "印尼": 14131,
-            "印度": 1945,
-            "美國": 9680,
-            "加拿大": 1101
+            "日本": 9910, "韓國": 3165, "越南": 24872, "泰國": 7534, "馬來西亞": 6188, "新加坡": 2309, "菲律賓": 9350, "印尼": 14131, "印度": 1945, "美國": 9680, "加拿大": 1101
         },
-        // 民國 111 年 (ROC Year 111) = 2022 年 (AD Year 2022)
         "2022": {
-            "日本": 87133,
-            "韓國": 51480,
-            "越南": 135356,
-            "泰國": 74356,
-            "馬來西亞": 60742,
-            "新加坡": 66182,
-            "菲律賓": 64490,
-            "印尼": 79301,
-            "印度": 9929,
-            "美國": 85840,
-            "加拿大": 14486
+            "日本": 87133, "韓國": 51480, "越南": 135356, "泰國": 74356, "馬來西亞": 60742, "新加坡": 66182, "菲律賓": 64490, "印尼": 79301, "印度": 9929, "美國": 85840, "加拿大": 14486
         },
-        // 民國 112 年 (ROC Year 112) = 2023 年 (AD Year 2023)
         "2023": {
-            "日本": 926140,
-            "韓國": 745885,
-            "越南": 382026,
-            "泰國": 391573,
-            "馬來西亞": 463292,
-            "新加坡": 423063,
-            "菲律賓": 352871,
-            "印尼": 206023,
-            "印度": 36968,
-            "美國": 534219,
-            "加拿大": 117203
+            "日本": 926140, "韓國": 745885, "越南": 382026, "泰國": 391573, "馬來西亞": 463292, "新加坡": 423063, "菲律賓": 352871, "印尼": 206023, "印度": 36968, "美國": 534219, "加拿大": 117203
         },
-        // 民國 113 年 (ROC Year 113) = 2024 年 (AD Year 2024)
         "2024": {
-            "日本": 1318372,
-            "韓國": 1010035,
-            "越南": 370802,
-            "泰國": 397168,
-            "馬來西亞": 463216,
-            "新加坡": 400181,
-            "菲律賓": 476746,
-            "印尼": 231455,
-            "印度": 45674,
-            "美國": 660284,
-            "加拿大": 144168
+            "日本": 1318372, "韓國": 1010035, "越南": 370802, "泰國": 397168, "馬來西亞": 463216, "新加坡": 400181, "菲律賓": 476746, "印尼": 231455, "印度": 45674, "美國": 660284, "加拿大": 144168
         }
     };
 
 
-    // Create root element
-    // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new("chartdiv");
 
     root.numberFormatter.setAll({
         numberFormat: "#a",
-
-        // Group only into M (millions), and B (billions)
         bigNumberPrefixes: [
             { number: 1e6, suffix: "M" },
             { number: 1e9, suffix: "B" }
         ],
-
-        // Do not use small number prefixes at all
         smallNumberPrefixes: []
     });
 
 
-    // Set themes
-    // 加入 DarkTheme 讓深色背景更好看
-    root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
 
     var stepDuration = 2000;
 
 
-    // Create chart
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/
     var chart = root.container.children.push(am5xy.XYChart.new(root, {
         panX: true,
         panY: true,
@@ -268,18 +189,14 @@
     }));
 
 
-    // We don't want zoom-out button to appear while animating, so we hide it at all
     chart.zoomOutButton.set("forceHidden", true);
 
 
-    // Create axes
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
     var yRenderer = am5xy.AxisRendererY.new(root, {
         minGridDistance: 20,
         inversed: true,
         minorGridEnabled: true
     });
-    // hide grid
     yRenderer.grid.template.set("visible", false);
 
     var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
@@ -296,7 +213,6 @@
         renderer: am5xy.AxisRendererX.new(root, {})
     }));
 
-    // 調整 X 軸標籤的數字格式為整數
     xAxis.get("renderer").labels.template.set("forceHidden", false);
     xAxis.get("renderer").labels.template.set("text", "{value.formatNumber('#,###')}");
 
@@ -305,8 +221,6 @@
     xAxis.set("interpolationEasing", am5.ease.linear);
 
 
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
         xAxis: xAxis,
         yAxis: yAxis,
@@ -314,10 +228,8 @@
         categoryYField: "network"
     }));
 
-    // Rounded corners for columns
     series.columns.template.setAll({ cornerRadiusBR: 5, cornerRadiusTR: 5 });
 
-    // Make each column to be of a different color
     series.columns.template.adapters.add("fill", function (fill, target) {
         return chart.get("colors").getIndex(series.columns.indexOf(target));
     });
@@ -326,23 +238,20 @@
         return chart.get("colors").getIndex(series.columns.indexOf(target));
     });
 
-    // Add label bullet (在每個長條尾部顯示數值)
     series.bullets.push(function () {
         return am5.Bullet.new(root, {
             locationX: 1,
             sprite: am5.Label.new(root, {
-                // 將格式改為顯示完整的數字並使用千位分隔符
                 text: "{valueXWorking.formatNumber('#,###')}", 
                 fill: root.interfaceColors.get("alternativeText"),
                 centerX: am5.p100,
                 centerY: am5.p50,
                 populateText: true,
-                paddingLeft: 10 // 稍微推開長條
+                paddingLeft: 10
             })
         });
     });
 
-    // 年份標籤 (大字體)
     var label = chart.plotContainer.children.push(am5.Label.new(root, {
         text: "2015",
         fontSize: "8em",
@@ -351,10 +260,9 @@
         y: am5.p100,
         centerY: am5.p100,
         centerX: am5.p100,
-        fill: am5.color(0x757575) // 設置灰色
+        fill: am5.color(0xA69E97) /* 水印保持原來的 #A69E97 */
     }));
 
-    // Get series item by category
     function getSeriesItem(category) {
         for (var i = 0; i < series.dataItems.length; i++) {
             var dataItem = series.dataItems[i];
@@ -364,30 +272,21 @@
         }
     }
 
-    // Axis sorting
     function sortCategoryAxis() {
-        // sort by value
         series.dataItems.sort(function (x, y) {
-            return y.get("valueX") - x.get("valueX"); // descending
+            return y.get("valueX") - x.get("valueX");
         });
 
-        // go through each axis item
         am5.array.each(yAxis.dataItems, function (dataItem) {
-            // get corresponding series item
             var seriesDataItem = getSeriesItem(dataItem.get("category"));
 
             if (seriesDataItem) {
-                // get index of series data item
                 var index = series.dataItems.indexOf(seriesDataItem);
-                // calculate delta position
                 var deltaPosition =
                     (index - dataItem.get("index", 0)) / series.dataItems.length;
-                // set index to be the same as series data item index
                 if (dataItem.get("index") != index) {
                     dataItem.set("index", index);
-                    // set deltaPosition instanlty
                     dataItem.set("deltaPosition", -deltaPosition);
-                    // animate delta position to 0
                     dataItem.animate({
                         key: "deltaPosition",
                         to: 0,
@@ -397,8 +296,6 @@
                 }
             }
         });
-        // sort axis items by index.
-        // This changes the order instantly, but as deltaPosition is set, they keep in the same places and then animate to true positions.
         yAxis.dataItems.sort(function (x, y) {
             return x.get("index") - y.get("index");
         });
@@ -406,7 +303,6 @@
 
     var year = 2015;
 
-    // update data with values each 1.5 sec
     var interval = setInterval(function () {
         year++;
 
@@ -459,7 +355,6 @@
                 });
             });
 
-            // 調整 Y 軸縮放，只顯示有數據的國家
             yAxis.zoom(0, itemsWithNonZero / yAxis.dataItems.length);
         }
     }
@@ -470,12 +365,10 @@
         updateData();
     }, 50);
 
-    // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
     series.appear(1000);
     chart.appear(1000, 100);
 
-    }); // end am5.ready()
+    });
     </script>
 
 </body>
